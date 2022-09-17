@@ -4,4 +4,4 @@ from app.handlers import router
 
 routes = APIRouter()
 
-routes.include_router(router, prefix="/cardb")
+routes.include_router(router, prefix="/api")
