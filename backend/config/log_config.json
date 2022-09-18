@@ -1,0 +1,22 @@
+{
+  "path": "./logs/log.txt",
+  "rotation": "20 MB",
+  "retention": "1 week",
+  "default_logger": {
+    "serialize": false,
+    "level": "info",
+    "format": "<level>{level: <8}</level> <green>{time:YYYY-MM-DD HH:mm:ss.SSS}</green> - <cyan>{name}</cyan>:<cyan>{function}</cyan> - <level>{message}</level>"
+  },
+  "middleware_logger": {
+    "path": "./logs/requests.txt",
+    "serialize": false,
+    "level": "info",
+    "format": "<level>{level: <8}</level> <green>{time:DD.MM.YYYY HH:mm:ss.SSS}</green>|request id: {extra[request_id]}| in <cyan>{name}</cyan>:<cyan>{function}</cyan> - <level>{message}</level>"
+  },
+  "debug_logger": {
+    "path": "./logs/debug.txt",
+    "serialize": false,
+    "level": "debug",
+    "format": "<level>{level: <8}</level> <green>{time:DD.MM.YYYY HH:mm:ss.SSS}</green>| {extra} | in <cyan>{name}</cyan>:<cyan>{function}</cyan> - <level>{message}</level>"
+  }
+}
