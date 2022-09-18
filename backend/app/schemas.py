@@ -16,16 +16,19 @@ class CarUpdate(_CarBase):
     vehicle_mileage: _pydantic.PositiveInt = None
 
 
+
 class CarList(_CarBase):
     owner: _pydantic.PositiveInt
     model: str
     vehicle_mileage: _pydantic.PositiveInt
 
 
+
 class CarCreate(_CarBase):
     owner: _pydantic.PositiveInt
     model: str
     vehicle_mileage: _pydantic.PositiveInt
+
 
 
 class CarDelete(_CarBase):

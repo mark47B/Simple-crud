@@ -11,5 +11,5 @@ class Car(_database.Base):
     __tablename__ = "cars"
     license_plate = _sql.Column(_sql.String(50), primary_key=True)
     model = _sql.Column(_sql.String(250), default=None)
-    owner = _sql.Column(_sql.BIGINT, default=None)
+    owner = _sql.Column(_sql.Integer, default=None)
     vehicle_mileage = _sql.Column(_sql.Integer, default=None)
