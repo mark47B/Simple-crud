@@ -12,23 +12,20 @@ from routes import routes
 from app.database import SessionLocal
 
 
-app = _fastapi.FastAPI()
-# app.add_middleware(
-#     CORSMiddleware,
-#     allow_origins=['*'],
-#     allow_credentials=True,
-#     allow_methods=['*'],
-#     allow_headers=['*'],
-# )
+app = _fastapi.FastAPI(
+    title="Simple crud task by corporeality",
+    version="1.0.0"
+)
+
 
 @app.middleware("http")
 async def db_session_middleware(request: Request, call_next):
-	response = Response("Internal server error", status_code=500)
-	try:
-		request.state.db = SessionLocal()
-		response = await call_next(request)
-	finally:
-		request.state.db.close()
-	return response
+    response = Response("Internal server error", status_code=500)
+    try:
+        request.state.db = SessionLocal()
+        response = await call_next(request)
+    finally:
+        request.state.db.close()
+    return response
 
 app.include_router(routes)
