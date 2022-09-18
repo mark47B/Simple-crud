@@ -22,8 +22,7 @@ middleware_logger = logger.bind(type="middleware")
 @app.middleware("http")
 async def db_session_middleware(request: Request, call_next):
     log = middleware_logger.bind(request_id=randint(1_000_000_000, 9_999_999_999))
-
-    request.logger = log
+    request.state.logger = log
 
     log.info(f"Request from {request.url}. Path: {request.url.path}, Method: {request.method}")
 
