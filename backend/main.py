@@ -11,7 +11,11 @@ from app.database import SessionLocal
 import logs
 
 app = _fastapi.FastAPI(
+<<<<<<< HEAD
+    title="Simple crud task by corporeality",
+=======
     title="Simple crud task by coproreality",
+>>>>>>> main
     version="1.0.0"
 )
 
