@@ -19,7 +19,7 @@ router = _fastapi.APIRouter()
             If any of attributes are missing, they won't be updated.")
 def update_car(car: _schemas.CarUpdate,
                db: _orm.Session = _fastapi.Depends(_services.get_db)):
-    ok = _services.check_car_by_license_plate(car.license_plate, db)
+    ok = _services.check_car_by_license_plate(car_id, db)
     if ok is False:
         raise _fastapi.HTTPException(status_code=404,
                                      detail="The car was not found")
