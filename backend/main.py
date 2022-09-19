@@ -15,7 +15,7 @@ app = _fastapi.FastAPI(
     version="1.0.0"
 )
 
-logs.init_logging("./config/log_config.json", False)
+logs.init_logging("./config/log_config.json", True)
 middleware_logger = logger.bind(type="middleware")
 
 
