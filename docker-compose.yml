@@ -1,22 +1,53 @@
+version: "3.9"
 services:
   database:
     image: postgres
     ports:
-      - 5432:5432
+      - "5432:5432"
     restart: always
     environment:
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: admin
       POSTGRES_DB: cardb
+    networks:
+      - default
     volumes:
       - db-video-upload-service:/var/lib/postgresql/data
+
   adminer:
     image: adminer
     restart: always
     depends_on:
       - database
     ports:
-      - 8080:8080
+      - "8080:8080"
+    networks:
+      - default
+
+  server:
+    build: ./backend
+    restart: always
+    ports:
+      - "8000:8000"
+    depends_on:
+      - database
+    networks:
+      - default
+    
+  client:
+    build: ./frontend
+    restart: always
+    ports:
+      - "3000:3000"
+    depends_on:
+      - server
+    networks:
+      - default
+  
+networks:
+  default:
+    external: true
+    name: existing-network
 
 volumes:
   db-video-upload-service:

@@ -10,6 +10,11 @@ git clone https://github.com/mark47B/TEAM4-task-simple-crud.git
 cd TEAM4-task-simple-crud/
 ```
 
+Создаём сеть
+```
+sudo docker network create existing-network
+```
+
 Запускаем приложение в докере
 ```
 sudo docker-compose up -d --build
