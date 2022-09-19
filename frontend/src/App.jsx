@@ -1,31 +1,23 @@
-import React, {useState} from "react"
-import { useEffect } from "react";
+import React from 'react';
+import { 
+  BrowserRouter as Router,
+  Routes,
+  Route} from 'react-router-dom'
+import Dashboard from './components/Table';
+import OneCar from './components/carPage'
 
 const App = () => {
-  const [message, setMessage] = useState("");
-
-  const getWelcomeMessage = async () =>{
-    const requestOptions = {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json"
-      },
-    };
-    const response = await fetch("/api", requestOptions);
-    const data = await response.json();
-
-    if(!response.ok){
-    console.log('Error in getWelcomeMessage')
-    }else{
-      setMessage(data.message); 
-    }
-  };
-  useEffect(() => {getWelcomeMessage()}, [])
   return (
-    <div>
-      <h1>{ message }</h1>
-    </div>
+    <>
+    <Router>
+      <Routes>
+        <Route path={'/'} element={<Dashboard />} exact />
+        <Route path={'/car/:id'} element={<OneCar />} exact />
+      </Routes>
+    </Router>
+    </>
   );
 };
+
 
 export default App;
